@@ -27,7 +27,17 @@ let users = [
 ]
 
 app.get('/users', (req, res) => {
-    res.render('users', { users: users })
+    res.render('users', { users })
+})
+
+app.get('/users/:id', (req, res) => {
+    const id = req.params.id;
+    for (let user of users){
+        if (user.id == id){
+            res.render('user', { user })
+        }
+    }
+    res.send({error: `User with id ${id} does not exist`})
 })
 
 app.listen(port, () => {
