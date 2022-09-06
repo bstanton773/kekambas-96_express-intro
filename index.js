@@ -40,6 +40,11 @@ app.get('/users/:id', (req, res) => {
     res.send({error: `User with id ${id} does not exist`})
 })
 
+app.get('/test/:testId/:testName/:abc/:xyz', (req, res) => {
+    console.log(req.params);
+    res.send('Test')
+})
+
 app.listen(port, () => {
     console.log(`Hello World app listening on port ${port}`)
 });
