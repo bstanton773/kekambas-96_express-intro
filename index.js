@@ -5,11 +5,29 @@ const port = 3000;
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
-    res.render('index', {firstName: 'Brian'});
+    res.render('index', {firstName: 'Brian', lastName: 'Stanton'});
 })
 
-app.get('/abc', (req, res) => {
-    res.send('ABC!')
+let users = [
+    {
+        id: 1,
+        username: 'brian',
+        age: 55
+    },
+    {
+        id: 2,
+        username: 'tatyana',
+        age: 34
+    },
+    {
+        id: 3,
+        username: 'ripal',
+        age: 38
+    }
+]
+
+app.get('/users', (req, res) => {
+    res.render('users', { users: users })
 })
 
 app.listen(port, () => {
